@@ -1,4 +1,4 @@
-// I AM NOT DONE
+
 
 use std::marker::PhantomData;
 
@@ -186,7 +186,7 @@ impl<F: Field> SimpleChip<F> {
                     .map(Number)?;
 
                 // fill out
-                offset += 1;
+                // offset += 1;
                 config.s_cub.enable(&mut region, offset)?;
                 let value = e.0.value().copied() * e.0.value().copied() * e.0.value().copied();
                 region
