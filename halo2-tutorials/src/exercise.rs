@@ -295,7 +295,9 @@ mod test {
                 let exercise = Exercise {
                     name: String::from("example"),
                     // We want a file that does actually compile
+                    test_mod: "".to_string(),
                     path: PathBuf::from("tests/fixture/state/pending_exercise.rs"),
+                    feature: "".to_string(),
                     mode: *mode,
                     hint: String::from(""),
                 };

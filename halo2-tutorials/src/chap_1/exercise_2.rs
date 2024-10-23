@@ -1,4 +1,4 @@
-// I AM NOT DONE
+
 
 #[cfg(test)]
 mod tests {
@@ -144,8 +144,8 @@ mod tests {
             let b = load_private(&config, layouter.namespace(|| "load b"), self.b)?;
             let c = load_constant(&config, layouter.namespace(|| "load c"), self.c)?;
 
-            let ab = ____;
-            let absq = ____;
+            let ab = mul(&config, layouter.namespace(|| "a*b"), a, b)?;
+            let absq = mul(&config, layouter.namespace(|| "a*b"), ab.clone(), ab)?;
             let out = mul(&config, layouter.namespace(|| "absq*c"), absq, c)?;
             // let ab = mul(&config,layouter.namespace(|| "a*b"), a, b)?;
             // let absq = mul(&config,layouter.namespace(|| "ab*ab"), ab.clone(), ab)?;
