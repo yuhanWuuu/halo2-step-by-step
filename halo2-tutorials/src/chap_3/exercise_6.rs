@@ -1,4 +1,4 @@
-// I AM NOT DONE
+
 
 use std::marker::PhantomData;
 
@@ -53,16 +53,16 @@ impl<F: Field> FiboChip<F> {
         }
 
         meta.create_gate("fibo gate", |meta| {
-            let s = meta.____;
-            let cur_left = ____;
-            let cur_right = ____;
-            let next_left = ____;
-            let next_right = ____;
+            let s = meta.query_selector(selector);
+            let cur_left = meta.query_advice(advice[0], Rotation::cur());
+            let cur_right = meta.query_advice(advice[1], Rotation::cur());
+            let next_left = meta.query_advice(advice[0], Rotation::next());
+            let next_right = meta.query_advice(advice[1], Rotation::next());
             Constraints::with_selector(
                 s,
                 vec![
-                    ___,
-                    ___,
+                    (cur_left + cur_right.clone() - next_left.clone()), // f(0) + f(1) = f(2)
+                    (cur_right + next_left - next_right), // f(1) + f(2) = f(3)
                 ],
             )
         });
